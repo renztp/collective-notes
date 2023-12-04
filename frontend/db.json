@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@email.io",
+      "theme": "dark"
+    }
+  ],
+  "settings": {
+    "defaultTheme": "dark",
+    "notifications": true
+  },
+  "collections": [
+    {
+      "id": 1,
+      "name": "Python Notes",
+      "createdDate": "2020-01-01T00:00:00.000Z",
+      "lastModified": "2020-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Object Pattern Notes",
+      "createdDate": "2020-01-01T00:00:00.000Z",
+      "lastModified": "2020-01-01T00:00:00.000Z"
+    }
+  ],
+  "notes": [
+    {
+      "id": 1,
+      "collectionId": 1,
+      "title": "Python Notes #1 Loops",
+      "content": "for i in range(10):\n\tprint(i)",
+      "createdDate": "2020-01-01T00:00:00.000Z",
+      "lastModified": "2020-01-01T00:00:00.000Z"
+    }
+  ]
+}
