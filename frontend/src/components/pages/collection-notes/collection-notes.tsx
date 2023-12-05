@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Outlet } from "react-router-dom";
 
 export const CollectionNotes = () => {
   // testing purposes only
@@ -6,8 +7,8 @@ export const CollectionNotes = () => {
 
   return (
     <div>
-      <button className="bg-sky-700">
-        <span className="text-white">Hello, World!</span>
+      <button className="">
+        <Outlet />
       </button>
     </div>
   )

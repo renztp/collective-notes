@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './index.css';
-import SettingsPage from './components/pages/settings/settings.page.tsx';
-import { CollectionNotes } from './components/pages/collection-notes/collection-notes.tsx';
 import AllNotes from './components/pages/all-notes/all-notes.tsx';
+import { CollectionNotes } from './components/pages/collection-notes/collection-notes.tsx';
+import CollectionSingle, { loader as CollectionSingleLoader } from './components/pages/collection-notes/collection-single.tsx';
 import Root from './components/pages/root.tsx';
-import CollectionSingle from './components/pages/collection-notes/collection-single.tsx';
+import SettingsPage from './components/pages/settings/settings.page.tsx';
+import './index.css';
+import { Collections } from './components/pages/collection-notes/collections.tsx';
+import { Collection } from './components/pages/collection-notes/collection.tsx';
 
 const router = createBrowserRouter([
   {
@@ -15,14 +17,16 @@ const router = createBrowserRouter([
     errorElement: <div>404</div>,
     children: [
       {
+        path: '/collections',
+        element: <Collections />,
+      },
+      {
         path: '/collection',
-        element: <CollectionNotes />,
+        element: <Collection />,
         children: [
           {
             path: ':collectionId',
-            loader: async ({params}) => {
-              return params;
-            },
+            loader: CollectionSingleLoader,
             element: <CollectionSingle />,
           },
         ],
