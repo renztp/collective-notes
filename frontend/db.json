@@ -14,14 +14,30 @@
   "collections": [
     {
       "id": 1,
-      "name": "Python Notes",
+      "title": "Python Notes",
       "createdDate": "2020-01-01T00:00:00.000Z",
+      "description": "Notes on Python",
       "lastModified": "2020-01-01T00:00:00.000Z"
     },
     {
       "id": 2,
-      "name": "Object Pattern Notes",
+      "title": "Object Pattern Notes",
       "createdDate": "2020-01-01T00:00:00.000Z",
+      "description": "Notes on Object Patterns",
+      "lastModified": "2020-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Advent of Code",
+      "createdDate": "2020-01-01T00:00:00.000Z",
+      "description": "Notes on Advent of Code",
+      "lastModified": "2020-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Frameworks",
+      "createdDate": "2020-01-01T00:00:00.000Z",
+      "description": "Notes on Frameworks",
       "lastModified": "2020-01-01T00:00:00.000Z"
     }
   ],
