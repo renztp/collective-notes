@@ -8,7 +8,7 @@ interface SidebarLinkProps {
 
 const SidebarLink = ({ path, label, active }: SidebarLinkProps) => {
   return (
-    <Link to={path} className={active ? 'active' : ''}>{label}</Link>
+    <Link to={path} className={active ? 'active text-cn-text' : 'text-cn-text'}>{label}</Link>
   )
 }
 

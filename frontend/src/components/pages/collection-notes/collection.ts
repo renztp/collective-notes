@@ -5,3 +5,7 @@ export interface Collection {
   title: string;
   description: string;
 }
+
+export interface CollectionSummary extends Collection {
+  ownerId: string;
+}

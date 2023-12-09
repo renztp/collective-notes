@@ -12,6 +12,7 @@ module.exports = {
         'cn-primary': '#B7C0B4',
         'cn-secondary': '#D3DAD4',
         'cn-accent': '#757A66',
+        'cn-sidebar-header': '#AC9B9B',
       },
     },
   },
