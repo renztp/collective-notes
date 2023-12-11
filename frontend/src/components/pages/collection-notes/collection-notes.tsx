@@ -6,14 +6,6 @@ export const CollectionNotes = () => {
   // testing purposes only
   const [list, setList] = useState([]);
 
-  useEffect(() => {
-    async () => {
-      const pokemon = axios.get('https://pokeapi.co/api/v2/pokemon/ditto').then(res => res.data);
-      console.log(pokemon)
-      return pokemon;
-    }
-  }, [])
-
   return (
     <div>
       <button className="">

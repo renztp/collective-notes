@@ -1,7 +1,7 @@
 export interface Collection {
   id: string;
   createdDate: Date;
-  lastModiefied: Date;
+  lastModified: Date;
   title: string;
   description: string;
 }

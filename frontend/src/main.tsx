@@ -9,6 +9,7 @@ import SettingsPage from './components/pages/settings/settings.page.tsx';
 import './index.css';
 import { Collections } from './components/pages/collection-notes/collections.tsx';
 import { Collection } from './components/pages/collection-notes/collection.tsx';
+import CollectionSingleEdit from './components/pages/collection-notes/collection-single-edit.tsx';
 
 const router = createBrowserRouter([
   {
@@ -25,8 +26,7 @@ const router = createBrowserRouter([
         element: <Collection />,
         children: [
           {
-            path: ':collectionId',
-            loader: CollectionSingleLoader,
+            path: ':collectionId', loader: CollectionSingleLoader,
             element: <CollectionSingle />,
           },
         ],
