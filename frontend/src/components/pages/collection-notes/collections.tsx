@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllCollections } from "./collection.service";
 import { Collection } from "./collection";
 import { Link } from "react-router-dom";
+import { shortenParagraph } from "../../../utils/text.utils";
 
 async function getCollections(): Promise<Collection[]> {
   return await getAllCollections();
@@ -28,7 +29,7 @@ export const Collections = () => {
           collections.length > 0 && collections.map((collection: Collection) => (
             <Link to={`/collection/${collection.id}`} key={collection.id} className="bg-cn-secondary rounded-md h-48 p-5 border-cn-primary border hover:border-cn-accent relative">
               <h3 className="font-medium text-lg mb-2">{collection.title}</h3>
-              <p className="text-md">{collection.description}</p>
+              <p className="text-md">{shortenParagraph(collection.description, 95)}</p>
 
               <div className="absolute bottom-5 w-full">
                 <div className="flex justify-between mr-10">
