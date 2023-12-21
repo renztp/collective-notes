@@ -36,8 +36,9 @@ export const CollectionSingle = () => {
           }
         </div>
         :
-        <div>
-          <p>Editing....</p>
+        <div className="w-[80%] m-auto text-center pt-5">
+          <div className="block size-full text-center mb-5"><input className="rounded border border-gray-800 p-3 text-center text-2xl font-bold text-cn-text-secondary mr-3 block w-[100%]" type="text" value={collection.title} /></div>
+          <div className="block size-full"><textarea className="rounded border w-[100%] border-gray-800 p-3" value={collection.description}></textarea></div>
         </div>
       }
     </>
