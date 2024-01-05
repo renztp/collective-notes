@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { getAllCollections } from "./collection.service";
-import { Collection } from "./collection";
 import { Link } from "react-router-dom";
+import { getAllCollections } from "../../../services/collection.service";
 import { shortenParagraph } from "../../../utils/text.utils";
+import { Collection } from "./collection";
 
 async function getCollections(): Promise<Collection[]> {
   return await getAllCollections();
 }
 
-export const Collections = () => {
+export const CollectionsComponent = () => {
   const [collections, useCollections] = useState([]);
 
   useEffect(() => {
@@ -17,13 +17,13 @@ export const Collections = () => {
       if (collections.length > 0) {
         useCollections(collections);
       }
-    }
+    };
     fetchData();
-  }, [])
+  }, []);
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold mb-5">Collections</h1>
+      <h1 className="text-2xl font-semibold mb-5">All Collections</h1>
       <div className="grid grid-cols-3 gap-8">
         {
           collections.length > 0 && collections.map((collection: Collection) => (
@@ -42,5 +42,5 @@ export const Collections = () => {
         }
       </div>
     </div>
-  )
-}
+  );
+};
