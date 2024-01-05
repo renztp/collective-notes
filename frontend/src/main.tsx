@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import AllNotes from './components/pages/all-notes/all-notes.tsx';
-import { CollectionNotes } from './components/pages/collection-notes/collection-notes.tsx';
-import CollectionSingle, { loader as CollectionSingleLoader } from './components/pages/collection-notes/collection-single.tsx';
-import Root from './components/pages/root.tsx';
-import SettingsPage from './components/pages/settings/settings.page.tsx';
+import AllNotes from './components/pages/all-notes/all-notes';
+import Root from './components/pages/root';
+import SettingsPage from './components/pages/settings/settings.page';
 import './index.css';
-import { Collections } from './components/pages/collection-notes/collections.tsx';
-import { Collection } from './components/pages/collection-notes/collection.tsx';
-import CollectionSingleEdit from './components/pages/collection-notes/collection-single-edit.tsx';
+import { CollectionsComponent } from './components/pages/collection-notes/collections.component';
+import { CollectionComponent, loader as CollectionComponentLoader } from './components/pages/collection-notes/collection.component';
 
 const router = createBrowserRouter([
   {
@@ -19,17 +16,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/collections',
-        element: <Collections />,
+        element: <CollectionsComponent />,
       },
       {
-        path: '/collection',
-        element: <Collection />,
-        children: [
-          {
-            path: ':collectionId', loader: CollectionSingleLoader,
-            element: <CollectionSingle />,
-          },
-        ],
+        path: '/collection/:collectionId',
+        loader: CollectionComponentLoader,
+        element: <CollectionComponent />,
       },
       {
         path: '/all-notes',

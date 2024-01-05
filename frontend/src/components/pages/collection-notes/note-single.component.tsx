@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { FiHeart } from "react-icons/fi";
 import { Link, useLoaderData } from "react-router-dom";
 import Editor from "react-simple-wysiwyg";
-import { Collection } from "./collection";
-import { getCollection } from "./collection.service";
-import { NotesContent } from "./notes-content";
+import { getCollection } from "../../../services/collection.service";
+import { Note } from "./note";
+import { NotesContent } from "./notes-content.component";
 
 export async function loader({ params }: string) {
   const collection = await getCollection(params.collectionId);
   return collection;
 }
 
-export const CollectionSingle = () => {
+export const NoteSingle = () => {
   const [isNoteEditing, setIsNoteStateEditing] = useState(false);
-  const collection = useLoaderData() as Collection || "";
+  const collection = useLoaderData() as Note;
 
   const [noteTitle, setNoteTitle] = useState("");
   const [noteDescription, setNoteDescription] = useState("");
@@ -24,13 +24,12 @@ export const CollectionSingle = () => {
 
   useEffect(() => {
     setNoteTitle(collection.title);
-    setNoteDescription(collection.description);
+    setNoteDescription(collection.content);
   }, [collection]);
 
-  function onSave(e) {
+  function onSave(e: any) {
     e.preventDefault();
 
-    console.log('collection', collection);
     setIsNoteStateEditing(false);
   }
 
@@ -53,7 +52,7 @@ export const CollectionSingle = () => {
             collection
               ? <NotesContent
                 title={collection.title}
-                description={collection.description}
+                description={collection.content}
                 createdDate={collection.createdDate}
                 lastModified={collection.lastModified}
               />
@@ -77,7 +76,7 @@ export const CollectionSingle = () => {
 
 interface ButtonGroupProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  buttonAction: (state) => void;
+  buttonAction: (state: any) => void;
 }
 
 const ViewButtonGroup: React.FC<ButtonGroupProps> = ({ buttonAction }) => {
@@ -97,4 +96,4 @@ const EditButtonGroup: React.FC<ButtonGroupProps> = ({ buttonAction }) => {
   );
 };
 
-export default CollectionSingle;
+export default NoteSingle;

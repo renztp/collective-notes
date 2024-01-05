@@ -46,7 +46,23 @@
       "id": 1,
       "collectionId": 1,
       "title": "Python Notes #1 Loops",
-      "content": "for i in range(10):\n\tprint(i)",
+      "content": "A list of loop functions or how to do loops",
+      "createdDate": "2020-01-01T00:00:00.000Z",
+      "lastModified": "2020-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "collectionId": 2,
+      "title": "Javascript Notes #1 Math Functions",
+      "content": "A list of Math functions",
+      "createdDate": "2020-01-01T00:00:00.000Z",
+      "lastModified": "2020-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "collectionId": 2,
+      "title": "Javascript Notes #2 Array Methods",
+      "content": "Map, Reduce, Filter, etc",
       "createdDate": "2020-01-01T00:00:00.000Z",
       "lastModified": "2020-01-01T00:00:00.000Z"
     }
