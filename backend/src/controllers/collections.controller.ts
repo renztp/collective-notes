@@ -1,11 +1,12 @@
 import Collection from "../models/collections.model.js";
-import mongoose from 'mongoose'; 
 
 export const getAllCollections = async (req, res) => {
   try {
     const collections = await Collection.find();
     res.status(200).json(collections);
+    console.log(`[GET][200] /collections`);
   } catch (error) {
+    console.log(`[ERR][GET] /collections`, error);
     res.status(404).json({ message: error.message });
   }
 }
@@ -24,8 +25,18 @@ export const createNewCollection = async (req, res) => {
 export const getCollectionById = async (req, res) => {
   const { id } = req.params;
   try {
-    const collection = await Collection.findById(id);
+    const collection = await Collection.find({ _id: id });
     res.status(200).json(collection);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getNotesByCollectionId = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const collection = await Collection.findById(id);
+    res.status(200).json(collection.description);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

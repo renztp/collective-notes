@@ -1,16 +1,14 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const collectionSchema = new mongoose.Schema({
-  items: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Item',
-    default: []
-  }],
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-}, {
-  timestamps: true,
-});
+const collectionSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const Collection = mongoose.model('Collection', collectionSchema);
+const Collection = mongoose.model("Collection", collectionSchema);
 export default Collection;
