@@ -1,14 +1,25 @@
-import React, { useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { getCollection } from '../../../services/collection.service';
-import { Collection } from './collection';
-import { getNotesByCollectionId } from '../../../services/collection.service';
-import { Note } from './note';
-import { shortenParagraph } from '../../../utils/text.utils';
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import React, { useEffect } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import {
+  getCollection,
+  getNotesByCollectionId,
+} from "../../../services/collection.service";
+import { shortenParagraph } from "../../../utils/text.utils";
+import { Collection } from "./collection";
+import { Note } from "./note";
 
 export async function loader({ params }: string) {
   const collection = await getCollection(params.collectionId);
+  const test = axios
+    .get("http://localhost:3000/api/v1/collections", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      console.log(res.data);
+    });
   return collection;
 }
 
@@ -31,11 +42,15 @@ export const CollectionComponent = () => {
 
   useEffect(() => {
     loadData();
-  }, [])
+  }, []);
 
   const NoteItem: React.FC<Note> = ({ ...note }) => {
-    return(
-      <Link to={`/collection/${note.id}`} key={note.id} className="bg-cn-secondary rounded-md h-48 p-5 border-cn-primary border hover:border-cn-accent relative">
+    return (
+      <Link
+        to={`/collection/${note.id}`}
+        key={note.id}
+        className="bg-cn-secondary rounded-md h-48 p-5 border-cn-primary border hover:border-cn-accent relative"
+      >
         <h3 className="font-medium text-lg mb-2">{note.title}</h3>
         <p className="text-md">{shortenParagraph(note.content, 95)}</p>
 
@@ -46,26 +61,30 @@ export const CollectionComponent = () => {
           </div>
         </div>
       </Link>
-    )
-  }
-
-  const NoContentFound: React.FC<{ message: string; }> = ({ message }) => {
-    return (
-      <p>{message}</p>
     );
-  }
+  };
 
-  return collection && (
-    <div>
-      <div className='mb-5'>
-        <h1 className="text-2xl font-semibold">{collection.title}</h1>
-        <p>{collection.description}</p>
+  const NoContentFound: React.FC<{ message: string }> = ({ message }) => {
+    return <p>{message}</p>;
+  };
+
+  return (
+    collection && (
+      <div>
+        <div className="mb-5">
+          <h1 className="text-2xl font-semibold">{collection.title}</h1>
+          <p>{collection.description}</p>
+        </div>
+        <div className="grid grid-cols-3 gap-8">
+          {notes.length > 0 ? (
+            notes.map((note: Note) => <NoteItem key={note.id} {...note} />)
+          ) : (
+            <NoContentFound message="No notes found" />
+          )}
+        </div>
       </div>
-      <div className="grid grid-cols-3 gap-8">
-        {notes.length > 0 ? notes.map((note: Note) => <NoteItem key={note.id} {...note} /> ) : <NoContentFound message="No notes found" />}
-      </div>
-    </div>
-  )
+    )
+  );
 };
 
 export default CollectionComponent;
